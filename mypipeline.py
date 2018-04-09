@@ -60,8 +60,8 @@ class CleanTable(BaseEstimator, TransformerMixin):
 def test_pipeline(df, nlp_pipeline, y_column='speaker'):
     label = df[y_column].copy()
     X = df.drop(y_column, axis=1).copy()
-    
-    rskf = StratifiedKFold(n_splits=5, random_state=1)
+   
+    rskf = StratifiedKFold(n_splits=10, random_state=1)
     accs = []
     for train_index, test_index in rskf.split(X, label):
         X_train, X_test = X.iloc[train_index].copy(), X.iloc[test_index].copy()
